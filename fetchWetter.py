@@ -6,7 +6,14 @@
 # Dieses Script muss auf einen Python-faehigen Rechner gespeichert und dort regelmaessig ausgefuehrt (CRON) werden (vorzugsweise also ein Server)
 # Als Croneintrag bietet sich an (entsprechende Lokation des Skriptes vorausgesetzt) - mit diesem Eintrag wird alle 10 Minuten aktualisiert:
 # */10 *  * * *	root	/usr/bin/fetchWetter.py
+#
+# Die Werte werden auf Virtuelle Eingaenge in der Loxone umgelegt - sollten andere Namen Verwendung finden, muss das entsprechend angepasst werden:
+# - LoxVirtuellerEingang (WetterSonnig): ein digitaler Eingang, der 0 bzw. 1 schaltet, wenn die Sonne scheint oder nicht
+# - LoxVirtuellerEingangTemp (Aussentemperatur): ein analoger Eingang, der die Temperatur aufnimmt
+#
+# Die Daten kommen vom deutschen Wetterdienst und sind auf Berlin eingestellt. Fuer andere Lokationen muessten die Parameter <URL> und <findLineStr> angepasst werden.
 
+# Spezifische Parameter fuer die Quelle der Klima-Daten (beim Deutschen Wetterdienst)
 URL="http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop?_nfpb=true&_pageLabel=_dwdwww_wetter_warnungen_regionenwetter&T1400077811143553394835gsbDocumentPath=Content%2FOeffentlichkeit%2FWV%2FWV11%2FWarnungen%2FWetter__Aktuell%2FRegionenwetter%2FRegion__Nordost__Teaser.html&_state=maximized&_windowLabel=T1400077811143553394835&lastPageLabel=_dwdwww_wetter_warnungen_regionenwetter"
 findBlockStr = "blockBodyPre"
 findLineStr = "Berlin"
