@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # Python Skript zum Laden von Wetterdaten in die Loxone
 # Michael Pilgermann (kichkasch@gmx.de)
-# Letzte Aenderung: 2016-04-19
+# Letzte Aenderung: 2016-05-16
 #
 # Dieses Script muss auf einen Python-faehigen Rechner gespeichert und dort regelmaessig ausgefuehrt (CRON) werden (vorzugsweise also ein Server)
 # Als Croneintrag bietet sich an (entsprechende Lokation des Skriptes vorausgesetzt) - mit diesem Eintrag wird alle 10 Minuten aktualisiert:
@@ -20,7 +20,7 @@
 CITY = "Berlin"
 URL= "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + CITY + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
 
-himmelOK = ["Sunny","Mostly Sunny","Clear"]
+himmelOK = ["Sunny","Mostly Sunny","Clear",  "Fair",  "Hot"]     # https://developer.yahoo.com/weather/documentation.html#codes 
 
 # Loxone Parameter
 LoxPrefix = "http://"
