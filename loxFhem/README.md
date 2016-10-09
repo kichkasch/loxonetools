@@ -5,7 +5,8 @@ End of 2016 I started extending my Loxone homeautomation by FHEM/HomeMatic compo
 
 ###Background:
 * [Loxone](http://www.loxone.com) is a company from Austria, which sells (among other products) the so called *Loxone Miniserver*. Its a propriety solution. 
-	* I had realised light, heating and jalousies with Loxone. Technically, Loxone (wired) requires a star topology cabeling; however, several extensions are available to integrate with other systems (such as Enocean, 1-Wire or KNX).
+	* Technically, Loxone (wired) requires a star topology cabeling; however, several extensions are available to integrate with other systems (such as Enocean, 1-Wire or KNX).
+	* I had realised light, heating and jalousies with Loxone. 
 * [FHEM](http://fhem.de/) is an (if not *the*) open source solution for home automation. Several systems can be connected.
 * [HomeMatic](http://www.homematic.com/) is a propriety air interface automation solution with tons of sensors / actors provided on low prices.	
 
@@ -28,10 +29,19 @@ For my purposes I am looking to integrate with the following devices:
 * Visulisation: LED Panel [eQ-3 104798 HomeMatic Funk-Statusanzeige LED16](https://www.amazon.de/dp/B007VTXP2I/ref=cm_sw_em_r_mt_dp_8Rb7xbRH9YZ5P)
 * Window Open|Close sensor: [HomeMatic Funk-Fenster-Drehgriffkontakt](https://www.amazon.de/dp/B0024G9AEA/ref=cm_sw_em_r_mt_dp_E0b7xb7MT252Q)
 
+I have also got some REV radio controlled power sockets; would be grant to also make them joining the automation circle of devices.
+
+
 ###Realisation
 
 
 ###Further information:
 
 1. (German) [MeinTechBlog Overview](http://www.meintechblog.de/2016/07/5-gruende-zur-erweiterung-deines-fhem-servers-mit-loxone-howto/) on integrating FHEM with Loxone via UDP by [Christoph Klima](http://www.meintechblog.de/info/#christoph).
+
+###Contacts
+
+Email me on mailto:kichkasch@gmx.de.
+
+Last change: 2016-10-09.
 
