@@ -15,9 +15,12 @@
 
 # Wunderworld-Parameter
 WunderKey = "*****"  # get your key here: https://www.wunderground.com/weather/api
-WunderLocation = "pws:IBERLIN69"    # Von der Webseite wunderground - Zusammenstellung ist hier gut erklaert: http://www.loxwiki.eu/display/LOX/Weather+Underground+%28Wunderground%29+direkt+in+Loxone+einbinden
-WunderURL = "http://api.wunderground.com/api/"+ WunderKey +"/alerts/conditions/forecast/hourly/lang%3ADL/pws%3A1/bestfct%3A1/q/"+WunderLocation+".json"
-UV_Threashold = 5   # ab wann gilt das Wetter als sonnig (https://www.wunderground.com/resources/health/uvindex.asp?MR=1)
+#WunderLocation = "pws:IBERLIN69"    # Von der Webseite wunderground - Zusammenstellung ist hier gut erklaert: http://www.loxwiki.eu/display/LOX/Weather+Underground+%28Wunderground%29+direkt+in+Loxone+einbinden
+WunderLocation = "pws:IBEPANKO6"    
+WunderURL = "http://api.wunderground.com/api/"+ WunderKey +"/alerts/conditions/forecast/hourly/lang%3AEN/pws%3A1/bestfct%3A1/q/"+WunderLocation+".json"
+
+conditionsDict = {"clear": 1, "funnelcloud" : 2, "partlycloudy": 2, "scatteredclouds": 2, "mostlycloudy": 3, "overcast": 4, "haze": 5, "fog": 6, "fogpatches": 6, "freezingfog": 6, "mist": 6, "partialfog": 6, "patchesoffog": 6, "shallowfog": 6, "blowingsnow": 9, "rainshowsers": 11, "freezingdrizzle": 13, "freezingrain": 13, "rain": 13, "rainmist": 13, "drizzle": 13, "thunderstorm": 15, "thunderstormandicepellets": 15, "thunderstormandrain": 15, "thunderstormandsnow": 15, "thunderstormwithhail": 15, "thunderstormwithsmallhail": 15, "snow": 21, "snowblowing": 21, "snowmist": 21, "snowgrains": 21, "snowshowers": 21, "hail": 23, "hailshowers": 23, "icecrystals": 23, "icepelletshowers": 23, "icepellets": 23, "smallhail": 23, "smallhailshowers": 23}
+indexThreshold = 2;
 
 # Loxone Parameter
 LoxPrefix = "http://"
@@ -39,13 +42,14 @@ html = response.read()
 data = json.loads(html)
 values = data["current_observation"]
 temp = str(values["temp_c"])
-himmel = values['weather']
+himmel = values['weather'].lower()
 feuchte = values["relative_humidity"]
 luftdruck = values["pressure_mb"]
-uv = int(values["UV"])
 sichtweite = values["visibility_km"]
 messzeitpunkt = values["observation_time_rfc822"]
-if uv > UV_Threashold:
+
+weatherIndex = conditionsDict[himmel] 
+if weatherIndex <= indexThreshold:
     sonnig ="0"
 else:
     sonnig = "1"
